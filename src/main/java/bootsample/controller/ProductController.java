@@ -23,6 +23,12 @@ public class ProductController {
 	@Autowired
 	private ProductService productService;
 	
+	@GetMapping("/")
+	public String home(HttpServletRequest request){
+		request.setAttribute("mode", "MODE_HOME");
+		return "index";
+	}
+	
 	@GetMapping("/all-products")
 	public String allProducts(HttpServletRequest request){
 		request.setAttribute("products", productService.findAll());
